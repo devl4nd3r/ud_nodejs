@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    
+    <meta
+      http-equiv="X-Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'"
+    />
+    <title>Hello from Electron renderer!</title>
+  </head>
+  <body>
+    <h1>Hello from Electron renderer!</h1>
+    <button id="prev" onclick="prev()">Prev</button>
+    <img id="slider" src="http://www.sololearn.com/uploads/slider/1.jpg" width="200px" height="100px"/>
+    <button id="next" onclick="next()">Next</button>
+  </body>
+  
+</html>
+<script>
+  var images = [
+  'http://www.sololearn.com/uploads/slider/1.jpg', 
+  'http://www.sololearn.com/uploads/slider/2.jpg', 
+  'http://www.sololearn.com/uploads/slider/3.jpg'
+  ];
+  var num = 0;
+  function prev() {
+    num--;
+    var slider = document.getElementById("slider");
+    if(num <0) {
+      num = images.length - 1;
+    }
+    slider.src = images[num];
+  }
+  function next() {
+    num++;
+    var slider = document.getElementById("slider");
+    if(num > (images.length - 1)) {
+      num = 0;
+    }
+    slider.src = images[num];
+  }
+
+</script>
